@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "47109436-14ca-4bad-9287-bbf4a3ad0a00",
+		"name": "FFM Auth Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Positive",
+			"item": [
+				{
+					"name": "FFM create Admin Manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody)\r",
+									"pm.environment.set(\"company_id\",company_id.data.company_id)\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"password\": \"1235548\",\r\n  \"firstname\": \"Saiful\",\r\n  \"lastname\": \"Uddin\",\r\n  \"username\": \"{{$randomUserName}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{website.adress}}/api/v1/field-force/auth/register-admin-user",
+							"host": [
+								"{{website.adress}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"field-force",
+								"auth",
+								"register-admin-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative",
+			"item": []
+		},
+		{
+			"name": "FFM create admin manager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jasonData =JSON.parse(responseBody)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"\",\r\n  \"password\": \"NSnkj544578555\",\r\n  \"firstname\": \"Saiful\",\r\n  \"lastname\": \"Uddin\",\r\n  \"username\": \"452741\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{website.adress}}/api/v1/field-force/auth/register-admin-user",
+					"host": [
+						"{{website.adress}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"auth",
+						"register-admin-user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
